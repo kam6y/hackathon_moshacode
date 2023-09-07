@@ -197,6 +197,7 @@ Mainvisual
   height: 720px;
   position: relative;
   margin-bottom: 120px;
+  border: solid 1px #9a0413
 }
 /*
 テキストとボタンが画像の上に表示されるように「z-index」を設定
@@ -359,84 +360,47 @@ Reason
 スライド左右共通
 最初は「opacity: 0;」で非表示にしておく
 */
-#reason .slide {
+.inview-slide-left {
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fff;
   padding: 5%;
-  opacity: 0;
+  margin-right: auto;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 40px;
 }
-#reason .slide img {
+.inview-slide-right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 5%;
+  margin-left: auto;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  margin-bottom: 40px;
+}
+img {
   width: auto;
   height: 60px;
   margin-right: 30px;
 }
-#reason .slide .title {
+.title {
   color: #ff2a2a;
   display: block;
   font-size: 1.75rem;
   font-weight: bold;
 }
-#reason .slide .text {
+.text {
   display: block;
   font-size: 1.125rem;
 }
-#reason .inview-slide-left {
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  margin-bottom: 40px;
-}
-/*
-アニメーション（スライド左）を実行
 
-slide-left：下で定義している「@keyframes slide-left」を実行
-0.5s：アニメーションが始まってから終わるまでの時間（0.5sかけて実行）
-ease-out：アニメーションの変化（開始時は早く、終了時は緩やかに変化）
-0s：アニメーションが始まるまでの時間（0sですぐに実行）
-1：アニメーションの繰り返し回数（1回）
-forwards：アニメーション終了時の状態をそのまま維持
-*/
-#reason .slide-left {
-  animation: slide-left 0.5s ease-out 0s 1 forwards;
-}
-/*
-アニメーション処理
 
-最初は「translateX(-50%);」で左側に隠しておく
-100%（0.5秒）かけて要素を表示させながら元の位置へ移動させる
-*/
-@keyframes slide-left {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-#reason .inview-slide-right {
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-/*
-アニメーション（スライド右）を実行
-
-※左の処理と同様
-*/
-#reason .slide-right {
-  animation: slide-right 0.5s ease-out 0s 1 forwards;
-}
-@keyframes slide-right {
-  0% {
-    transform: translateX(150%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(100%);
-  }
-}
 
 /*-------------------------------------------
 Voice
@@ -444,35 +408,47 @@ Voice
 #voice {
   margin-bottom: 120px;
 }
-#voice .item-left,
-#voice .item-right {
+.realvoice{
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.item-leftinview-balloon{
   display: flex;
   align-items: flex-start;
-  opacity: 0;
   margin-bottom: 60px;
 }
-#voice .item-left {
+.item-leftinview-balloon {
   justify-content: flex-start;
 }
-#voice .item-left:last-of-type {
+.item-leftinview-balloon {
   margin-bottom: 0;
 }
-#voice .item-right {
+.item-rightinview-balloon{
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+.item-rightinview-balloon {
   justify-content: flex-end;
 }
-#voice .student img {
+.item-rightinview-balloon {
+  margin-bottom: 0;
+}
+
+.student img {
   width: 120px;
   background-color: #ccc;
   border-radius: 50%;
   margin-bottom: 10px;
+  border: solid 1px #00F;
 }
-#voice .student .name {
+.student .name {
   font-size: 0.75rem;
   text-align: center;
 }
 /* ふきだしを設定 */
-#voice .item-left .balloon-text,
-#voice .item-right .balloon-text {
+.balloon-text {
   width: 60%;
   display: flex;
   justify-content: center;
@@ -481,61 +457,13 @@ Voice
   padding: 20px;
   position: relative;
 }
-#voice .item-left .balloon-text {
+.item-leftinviewballoon .balloon-text {
   margin-left: 25px;
 }
-/* 左のふきだしの矢印部分を設定 */
-#voice .item-left .balloon-text::before {
-  content: "";
-  position: absolute;
-  top: 60%;
-  left: 0;
-  margin-left: -30px;
-  border: 15px solid transparent;
-  border-right: 15px solid #e9f1fb;
-}
-#voice .item-right .balloon-text {
+.item-rightinviewballoon .balloon-text {
   margin-right: 25px;
 }
-/* 右のふきだしの矢印部分を設定 */
-#voice .item-right .balloon-text::before {
-  content: "";
-  position: absolute;
-  top: 60%;
-  right: 0;
-  margin-right: -30px;
-  border: 15px solid transparent;
-  border-left: 15px solid #e9f1fb;
-}
-/*
-アニメーションを実行
 
-balloon：下で定義している「@keyframes balloon」を実行
-0.5s：アニメーションが始まってから終わるまでの時間（0.5sかけて実行）
-ease-out：アニメーションの変化（開始時は早く、終了時は緩やかに変化）
-0s：アニメーションが始まるまでの時間（0sですぐに実行）
-1：アニメーションの繰り返し回数（1回）
-forwards：アニメーション終了時の状態をそのまま維持
-*/
-#voice .balloon {
-  animation: balloon 0.5s ease-out 0s 1 forwards;
-}
-/*
-アニメーション処理
-
-最初は「transform: scale(0.1);」で要素を小さくした状態で、「opacity: 0;」で非表示にしておく
-0.5秒かけて要素を表示させながら元のサイズへ戻す
-*/
-@keyframes balloon {
-  0% {
-    transform: scale(0.1);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 
 /*-------------------------------------------
 Summary
@@ -549,28 +477,21 @@ infinite：アニメーションの繰り返し回数(無限に繰り返す)
 linear：アニメーションの変化（開始から終了まで一定に変化）
 */
 #summary {
-  background: url("../img/bg.gif") repeat;
+  background: url(./img/bg.gif) repeat;
   animation: fall 10s infinite linear;
   padding: 60px 0;
   margin-bottom: 120px;
 }
-/*
-アニメーション処理
 
-10秒かけて背景画像の位置「background-position」を移動させる動作を繰り返す
-*/
-@keyframes fall {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: -700px 700px;
-  }
-}
-#summary .menu {
+/* #summary .menu {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+} */
+#summary .menu {
+  display: grid;
+  gap: 1rem .5rem;
+  grid-template-columns: 1fr 1fr;
 }
 #summary .menu li {
   width: 48%;
