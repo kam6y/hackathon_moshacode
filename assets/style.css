@@ -2,11 +2,14 @@
 
 html {
   font-size: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
 }
 body {
   color: #333;
   font-family: "游ゴシック体", "YuGothic", "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
   letter-spacing: 0.1em;
+  font-feature-settings: "palt";
 }
 a {
   color: #333;
@@ -55,14 +58,50 @@ li {
 -------------------------------------------*/
 #header {
   height: 100px;
-  padding: 40px 0 0 50px;
+  border: solid 1px #00F;
+}
+#header .header-inner{
+  height: 100px;
+  border: solid 1px #00F;
+  display: flex;
+  align-items: center;
 }
 #header .site-title {
   width: 100px;
   line-height: 1px;
 }
+#header .header-title{
+  margin: 0 auto;
+  font-size: 48px;
+  font-weight: bold;
+  background: linear-gradient(to right,#9a0413,#FFFF00);
+  -webkit-background-clip: text;
+  color: transparent;
+
+}
+/* ロゴを３D表示する。 */
 #header .site-title a {
   display: block;
+}
+#header .logo-wrapper{
+  perspective: 100vmax;
+}
+.box{
+  transform-style: preserve-3d;
+  display: grid;
+}
+.logo-box:hover{
+  transform: rotate3d(0.1, 1, 0.1, 180deg);
+}
+.box::before{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url(../assets/img/logo-hello.jpg) no-repeat center/cover;
+  position: absolute;
+  inset: 0 auto auto 0;
+  transform: translate3d(0,0,-8px);
 }
 
 /*
@@ -194,29 +233,31 @@ li {
 Mainvisual
 -------------------------------------------*/
 #mainvisual {
-  height: 720px;
+  height: 360px;
   position: relative;
   margin-bottom: 120px;
-  border: solid 1px #9a0413
+  background-color: #ff0000;
+  /* ナナメ背景を作る */
+  clip-path: polygon(0 0, 100% 0,100% 80%,0 100%);
+  /* 枠線にグラディエーションをかける */
+  border: solid 8px transparent;
+  border-image: linear-gradient(to right, #ff0000,#32b823);
+  border-image-slice: 1;
 }
 /*
 テキストとボタンが画像の上に表示されるように「z-index」を設定
 */
 #mainvisual .text {
   position: absolute;
-  top: 280px;
-  left: 10%;
+  top: 0px;
+  left: 5%;
   z-index: 10;
 }
-/*
-「text-shadow」で文字の輪郭に白い影をつけることで、
-文字が背景画像に埋もれないようにする
-*/
 #mainvisual .text .title {
   font-size: 2.875rem;
   font-weight: bold;
   margin-bottom: 30px;
-  text-shadow: 0 4px 6px #fff;
+  color: #fff;
 }
 #mainvisual .text .btn {
   background-color: #ff2a2a;
@@ -230,6 +271,10 @@ Mainvisual
   text-align: center;
   transition: 0.3s;
   position: relative;
+  border-radius: 50px;
+  background: #e0e0e0;
+  box-shadow:  20px 20px 60px #bebebe,
+  -20px -20px 60px #ffffff;
 }
 /*
 ボタンの右矢印
@@ -491,14 +536,15 @@ linear：アニメーションの変化（開始から終了まで一定に変�
 #summary .menu {
   display: grid;
   gap: 1rem .5rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px,2fr));
 }
 #summary .menu li {
   width: 48%;
   background-color: #fff;
   border-radius: 20px;
   padding: 60px;
-  margin-bottom: 32px;
+  margin: 0 32px 32px 32px;
+  border: solid 1px #00F;
 }
 /* 3つ目以降はmargin-bottomを設定しない */
 #summary .menu li:nth-child(n + 3) {
@@ -519,6 +565,12 @@ linear：アニメーションの変化（開始から終了まで一定に変�
   font-size: 1.125rem;
   margin-bottom: 30px;
 }
+#summary li p::first-letter{
+  color:#9a0413;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1l
+} 
 
 /*-------------------------------------------
 Entry
