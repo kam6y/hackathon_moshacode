@@ -2,11 +2,14 @@
 
 html {
   font-size: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
 }
 body {
   color: #333;
   font-family: "游ゴシック体", "YuGothic", "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
   letter-spacing: 0.1em;
+  font-feature-settings: "palt";
 }
 a {
   color: #333;
@@ -55,15 +58,36 @@ li {
 -------------------------------------------*/
 #header {
   height: 100px;
-  padding: 40px 0 0 50px;
+  display: flex;
+  padding: 0 30px;
+}
+#header .header-section{
+  flex: 1; 
+  /* 上要素をｎ分割 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #header .site-title {
+  padding-left: 30px;
   width: 100px;
   line-height: 1px;
 }
-#header .site-title a {
-  display: block;
+#header .header-title{  
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 48px;
+  font-weight: bold;
+  background: linear-gradient(to right,#9a0413,#FFFF00);
+  -webkit-background-clip: text;
+  color: transparent;
 }
+.header-section:first-child{
+  justify-content: flex-start;
+}
+.
 
 /*
 ハンバーガ―メニュー
@@ -194,59 +218,46 @@ li {
 Mainvisual
 -------------------------------------------*/
 #mainvisual {
-  height: 720px;
   position: relative;
+  height: 50vh;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* ナナメ背景を作る */
+  clip-path: polygon(0 0, 100% 0,100% 90%,0 100%);
+  /* 枠線にグラディエーションをかける */
+  border: solid 8px transparent;
+  background: linear-gradient(rgba(220, 16, 16, 0.5), #ff0000) padding-box,
+              linear-gradient(to right, #0cf,#87f) border-box;
+  border-radius: 2rem;
 }
-/*
-テキストとボタンが画像の上に表示されるように「z-index」を設定
-*/
-#mainvisual .text {
-  position: absolute;
-  top: 280px;
-  left: 10%;
-  z-index: 10;
-}
-/*
-「text-shadow」で文字の輪郭に白い影をつけることで、
-文字が背景画像に埋もれないようにする
-*/
 #mainvisual .text .title {
-  font-size: 2.875rem;
+  font-size: 48px;
   font-weight: bold;
   margin-bottom: 30px;
-  text-shadow: 0 4px 6px #fff;
+  color: #fff;
 }
 #mainvisual .text .btn {
-  background-color: #ff2a2a;
-  /* 文字の下に影をつけてボタンに立体感を出す */
-  border-bottom: 6px solid #9a0413;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 1.5rem;
+  /* background-color: #ff2a2a; */
   display: block;
-  padding: 15px 35px;
+  width: 320px;
+  height: 60px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.8;
+  margin: 0 auto;
   text-align: center;
-  transition: 0.3s;
-  position: relative;
+  border-radius: 50px;
+  background: #ff2a2a;
+  box-shadow: inset 25px 25px 54px #cf2222,
+  inset -25px -25px 54px #ff3232;
 }
-/*
-ボタンの右矢印
-上と右にボーダーを設定し、「transform: rotate(45deg)」で
-45度回転させることで矢印を作成
-positionで位置を調整する
-*/
-#mainvisual .text .btn::after {
-  content: "";
-  width: 16px;
-  height: 16px;
-  border-top: solid 3px #fff;
-  border-right: solid 3px #fff;
-  transform: rotate(45deg);
-  position: absolute;
-  top: 26px;
-  right: 30px;
-}
+
 /*
 ホバー時は、opacityで透過させながら「transform: scale(1.05);」で
 少しだけボタンのサイズを大きくする
@@ -255,94 +266,117 @@ positionで位置を調整する
   opacity: 0.9;
   transform: scale(1.05);
 }
-/*
-メインビジュアル
-animationを使用して、画像をフェードイン、フェードアウトで切り替えを行う
+/* 
+Index
+*/
+#index{
+  margin-bottom: 120px;
+}
+#index .index-list{
+  text-align: center;
+}
+#index .index-list .index-item{
+  display: inline-block;
+  margin: 0 10px;
+}
+.index-content a {
+  color: blue; /* リンクのテキストカラーを青に設定 */
+  text-decoration: none; /* 下線を除去 */
+  margin: 0 auto;
+  font-size: 24px;
+  
+}
 
-※画像のフェード切り替えは、CSSアニメーション以外にも
-jQueryのプラグインを使う等便利なやり方が色々ありますが、
-今回は学習のためにアニメーションを使用しています。
-*/
-#mainvisual .fade li {
-  width: 75%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  /* 最初は3枚の画像を非表示にしておく */
-  opacity: 0;
-  /*
-  アニメーションを実行
-  fade：下で定義している「@keyframes fade」を実行
-  15s：「@keyframes fade」の処理を15秒かけて実行
-  infinite：アニメーションの処理を無限に繰り返す
-  */
-  animation: fade 15s infinite;
+.index-content a:hover {
+  text-decoration: underline; /* ホバー時に下線を表示 */
+  color: red; /* ホバー時のテキストカラーを赤に設定 */
 }
-/*
-1枚目の画像のアニメーション実行タイミングを設定
-「animation-delay: 0s;」ですぐに実行
+
+
+/* 
+Scene
 */
-#mainvisual .fade li:nth-child(1) {
-  animation-delay: 0s;
+#scene{
+  margin-bottom: 120px;
 }
-/*
-2枚目の画像のアニメーション実行タイミングを設定
-「animation-delay: 5s;」で5秒後に実行
-*/
-#mainvisual .fade li:nth-child(2) {
-  animation-delay: 5s;
+#scene .section-wrapper{
+  border: solid 1px #00F;
+  align-items: center;
 }
-/*
-3枚目の画像のアニメーション実行タイミングを設定
-「animation-delay: 10s;」で10秒後に実行
-*/
-#mainvisual .fade li:nth-child(3) {
-  animation-delay: 10s;
+/* 以下テンプレサイトよりコピペ */
+slider-2 .slick-slide {
+  width: 300px;
+  height: 200px;
+  margin: 0 40px;
+  position: relative;
+  overflow: hidden;
 }
-#mainvisual .fade li img {
+.slider-2 .slick-slide img {
+  display: block;
+  /* 此処を変更して画像のサイズを変更する */
   width: 100%;
-  height: 720px;
+  height: 50vw;
   object-fit: cover;
 }
-/*
-「box-shadow」で画像のまわりをぼかす
-*/
-#mainvisual .fade li::after {
-  content: "";
+.slider-2 .slick-arrow {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 0;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  box-shadow: inset 0px 0px 20px 20px #fff;
+  top: 180px;
+  z-index: 1;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.16));
 }
-/*
-アニメーション処理
-上の「animation」で15sを指定しているので下記の処理を15秒かけて実行
-0%が0秒を表し、100%が15秒後を表す。
-
-0%の「opacity: 0;」で非表示の状態からスタートし、
-15%になるまでの間に少しづつ画像を表示（フェードイン）させる。
-そこから30%の時点までは画像を表示させたままの状態を維持し、
-45%の時点に向けて画像を非表示（フェードアウト）する。
-そこから100%まで非表示の状態を維持する。
-*/
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  30% {
-    opacity: 1;
-  }
-  45% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+.slider-2 .slick-arrow::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #09000d;
+  border-width: 3px 3px 0 0;
+  position: absolute;
+  top: 24px;
+  transform: rotate(45deg);
+}
+.slider-2 .slick-next {
+  right: 0;
+}
+.slider-2 .slick-prev {
+  left: 0;
+}
+.slider-2 .slick-next::before {
+  left: 20px;
+}
+.slider-2 .slick-prev::before {
+  border-width: 0 0 3px 3px;
+  right: 22px;
+}
+.dots-2 .slick-dots {
+  text-align: center;
+}
+.dots-2 .slick-dots li {
+  display: inline-block;
+}
+.dots-2 .slick-dots button {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 6px;
+  font-size: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  background: #bcbcbc;
+  border-radius: 50%;
+}
+.dots-2 .slick-dots .slick-active button {
+  background: #0a467d;
 }
 
 /*-------------------------------------------
@@ -355,88 +389,43 @@ Reason
   background-color: #ff2a2a;
   padding: 80px 0;
 }
-/*
-スライド左右共通
-最初は「opacity: 0;」で非表示にしておく
-*/
-#reason .slide {
+#reason .inview-slide{
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fff;
   padding: 5%;
-  opacity: 0;
 }
-#reason .slide img {
+#reason .inview-slide:nth-of-type(odd){
+  margin-right: auto;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 40px;
+}
+#reason .inview-slide:nth-of-type(even){
+  margin-left: auto;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  margin-bottom: 40px;
+}
+img {
   width: auto;
   height: 60px;
   margin-right: 30px;
 }
-#reason .slide .title {
+.title {
   color: #ff2a2a;
   display: block;
   font-size: 1.75rem;
   font-weight: bold;
 }
-#reason .slide .text {
+.text {
   display: block;
   font-size: 1.125rem;
 }
-#reason .inview-slide-left {
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  margin-bottom: 40px;
-}
-/*
-アニメーション（スライド左）を実行
 
-slide-left：下で定義している「@keyframes slide-left」を実行
-0.5s：アニメーションが始まってから終わるまでの時間（0.5sかけて実行）
-ease-out：アニメーションの変化（開始時は早く、終了時は緩やかに変化）
-0s：アニメーションが始まるまでの時間（0sですぐに実行）
-1：アニメーションの繰り返し回数（1回）
-forwards：アニメーション終了時の状態をそのまま維持
-*/
-#reason .slide-left {
-  animation: slide-left 0.5s ease-out 0s 1 forwards;
-}
-/*
-アニメーション処理
 
-最初は「translateX(-50%);」で左側に隠しておく
-100%（0.5秒）かけて要素を表示させながら元の位置へ移動させる
-*/
-@keyframes slide-left {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-#reason .inview-slide-right {
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-/*
-アニメーション（スライド右）を実行
-
-※左の処理と同様
-*/
-#reason .slide-right {
-  animation: slide-right 0.5s ease-out 0s 1 forwards;
-}
-@keyframes slide-right {
-  0% {
-    transform: translateX(150%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(100%);
-  }
-}
 
 /*-------------------------------------------
 Voice
@@ -444,140 +433,87 @@ Voice
 #voice {
   margin-bottom: 120px;
 }
-#voice .item-left,
-#voice .item-right {
+#voice .realvoice{
   display: flex;
-  align-items: flex-start;
-  opacity: 0;
+  flex-direction: column;
+  gap: 60px;
+}
+#voice .item-inview-balloon{
+  border: solid 1px #00F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 60px;
 }
-#voice .item-left {
-  justify-content: flex-start;
+#voice .item-inview-balloon:nth-of-type(odd){
+  margin-right: auto;
 }
-#voice .item-left:last-of-type {
-  margin-bottom: 0;
+#voice .item-inview-balloon:nth-of-type(even){
+  margin-left: auto;
 }
-#voice .item-right {
-  justify-content: flex-end;
+#voice .student{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #00F;
 }
 #voice .student img {
   width: 120px;
+  height: 120px;
   background-color: #ccc;
   border-radius: 50%;
   margin-bottom: 10px;
+  border: solid 1px #00F;
 }
 #voice .student .name {
   font-size: 0.75rem;
-  text-align: center;
+  border: solid 1px #00F;
 }
 /* ふきだしを設定 */
-#voice .item-left .balloon-text,
-#voice .item-right .balloon-text {
+.balloon-text {
   width: 60%;
   display: flex;
   justify-content: center;
   background: #e9f1fb;
   border-radius: 15px;
   padding: 20px;
+  margin:0 10px;
   position: relative;
 }
-#voice .item-left .balloon-text {
+.item-inview-balloon .balloon-text:nth-of-type(odd) {
   margin-left: 25px;
 }
-/* 左のふきだしの矢印部分を設定 */
-#voice .item-left .balloon-text::before {
-  content: "";
-  position: absolute;
-  top: 60%;
-  left: 0;
-  margin-left: -30px;
-  border: 15px solid transparent;
-  border-right: 15px solid #e9f1fb;
-}
-#voice .item-right .balloon-text {
+.item-inview-balloon .balloon-text:nth-of-type(even) {
   margin-right: 25px;
 }
-/* 右のふきだしの矢印部分を設定 */
-#voice .item-right .balloon-text::before {
-  content: "";
-  position: absolute;
-  top: 60%;
-  right: 0;
-  margin-right: -30px;
-  border: 15px solid transparent;
-  border-left: 15px solid #e9f1fb;
-}
-/*
-アニメーションを実行
 
-balloon：下で定義している「@keyframes balloon」を実行
-0.5s：アニメーションが始まってから終わるまでの時間（0.5sかけて実行）
-ease-out：アニメーションの変化（開始時は早く、終了時は緩やかに変化）
-0s：アニメーションが始まるまでの時間（0sですぐに実行）
-1：アニメーションの繰り返し回数（1回）
-forwards：アニメーション終了時の状態をそのまま維持
-*/
-#voice .balloon {
-  animation: balloon 0.5s ease-out 0s 1 forwards;
-}
-/*
-アニメーション処理
-
-最初は「transform: scale(0.1);」で要素を小さくした状態で、「opacity: 0;」で非表示にしておく
-0.5秒かけて要素を表示させながら元のサイズへ戻す
-*/
-@keyframes balloon {
-  0% {
-    transform: scale(0.1);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 
 /*-------------------------------------------
 Summary
 -------------------------------------------*/
-/*
-アニメーションを実行
-
-fall：下で定義している「@keyframes fall」を実行
-10s：アニメーションが始まってから終わるまでの時間（10sかけて実行）
-infinite：アニメーションの繰り返し回数(無限に繰り返す)
-linear：アニメーションの変化（開始から終了まで一定に変化）
-*/
 #summary {
-  background: url("../img/bg.gif") repeat;
+  background: url(./img/bg.gif) repeat;
   animation: fall 10s infinite linear;
   padding: 60px 0;
   margin-bottom: 120px;
 }
-/*
-アニメーション処理
-
-10秒かけて背景画像の位置「background-position」を移動させる動作を繰り返す
-*/
-@keyframes fall {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: -700px 700px;
-  }
-}
-#summary .menu {
+/* #summary .menu {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+} */
+#summary .menu {
+  display: grid;
+  gap: 1rem .5rem;
+  grid-template-columns: 1fr 1fr;
 }
 #summary .menu li {
-  width: 48%;
   background-color: #fff;
   border-radius: 20px;
   padding: 60px;
-  margin-bottom: 32px;
+  margin: 0 32px 32px 32px;
+  border: solid 1px #00F;
 }
 /* 3つ目以降はmargin-bottomを設定しない */
 #summary .menu li:nth-child(n + 3) {
@@ -598,6 +534,13 @@ linear：アニメーションの変化（開始から終了まで一定に変�
   font-size: 1.125rem;
   margin-bottom: 30px;
 }
+/* 一文字目を大きくする */
+#summary li p::first-letter{
+  color:#9a0413;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1l
+} 
 
 /*-------------------------------------------
 Entry
@@ -671,6 +614,7 @@ Entry
   font-size: 0.625rem;
   text-align: center;
 }
+
 
 /*-------------------------------------------
 SP

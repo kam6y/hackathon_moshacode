@@ -5,15 +5,26 @@
     <title>BBB英会話スクール</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/recet.css">
     <script src="js/main.js"></script>
+    <!-- slick用 -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
 
   <body>
+    <!-- ヘッダー -->
     <header id="header">
-      <h1 class="site-title">
-        <a href="#"><img src="img/logo-r.svg" alt="BBB英会話スクール"></a>
-      </h1>
-
+      <div class="header-section">
+        <h1 class="site-title">
+              <img src="assets/img/logo-r.svg" alt="BBB英会話スクール">
+        </h1>
+      </div>
+      <div class="header-section">
+        <h3 class="header-title">BBB</h3>
+      </div>
+      <!-- ハンバーガーメニュー -->
       <nav id="navi">
         <img class="logo" src="img/logo-w.svg" alt="BBB英会話スクール">
         <ul class="menu">
@@ -23,11 +34,12 @@
         </ul>
         <a class="btn" href="#">無料体験に申し込む</a>
       </nav>
-
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="header-section">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </header>
 
@@ -35,30 +47,49 @@
       <!-- メインビジュアル -->
       <div id="mainvisual">
         <div class="text">
-          <p class="title">話して学ぼう！<br>BBB英会話スクール</p>
+          <p class="title">話して学ぼう BBB英会話スクール</p>
           <a class="btn" href="#">無料体験はこちら</a>
         </div>
-        <ul class="fade">
-          <li><img src="img/mainvisual1.jpg" alt=""></li>
-          <li><img src="img/mainvisual2.jpg" alt=""></li>
-          <li><img src="img/mainvisual3.jpg" alt=""></li>
-        </ul>
       </div>
-
+      <!-- 目次 -->
+      <section class="index">
+          <details class="index-content">
+            <summary class="section-title">
+              目次
+            </summary>
+            <ul class="index-list">
+              <li class="index-item"><p><a href="#scene">授業風景</a></p></li>
+              <li class="index-item"><p><a href="#reason">BBBが選ばれる理由</a></p></li>
+              <li class="index-item"><p><a href="#voice">受講生の声</a></p></li>
+              <li class="index-item"><p><a href="#summary">スクールの概要</a></p></li>
+            </ul>
+          </details>
+      </section>
+      <!-- 授業風景 -->
+      <section id="scene">
+        <h2 class="section-title">授業風景</h2>
+        <div class="scene-wrapper">
+          <div class="slider-2" id="js-slider-2">
+            <div><img src="./assets/img/mainvisual1.jpg" alt="" width="200px" height="120px"></div>
+            <div><img src="./assets/img/mainvisual2.jpg" alt="" width="200px" height="120px"></div>
+            <div><img src="./assets/img/mainvisual3.jpg" alt="" width="200px" height="120px"></div>
+          </div>
+        </div>
+      </section>
+      
       <!-- BBBが選ばれる理由 -->
       <section id="reason">
         <h2 class="section-title">BBBが選ばれる理由</h2>
-
         <div class="bg">
-          <div class="slide inview-slide-left">
-            <img src="img/icon-pc.png" alt="">
+          <div class="inview-slide">
+            <img src="assets/img/icon-pc.jpg" alt="">
             <p>
               <span class="title">オンライン対応</span>
-              <span class="text">24時間いつでも受講できる！</span>
+              <span class="text">24時間いつでも受講できる!</span>
             </p>
           </div>
-          <div class="slide inview-slide-right">
-            <img src="img/icon-teacher.png" alt="">
+          <div class="inview-slide">
+            <img src="assets/img/icon-teacher.jpg" alt="">
             <p>
               <span class="title">講師はネイティブ</span>
               <span class="text">お気に入りの講師が自由に選べる！</span>
@@ -70,43 +101,44 @@
       <!-- 受講生の声 -->
       <section id="voice" class="wrapper">
         <h2 class="section-title">受講生の声</h2>
+        <div class="realvoice">
+          <div class="item-inview-balloon">
+            <div class="student">
+              <img src="./assets/img/icon-student1.png" alt="">
+              <p class="name">○○○さん<br>大学生</p>
+            </div>
+            <div class="balloon-text">
+              <p>
+                テキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>
+                テキストテキストテキストテキストテキストテキストテキストテキストテキスト
+              </p>
+            </div>
+          </div>
 
-        <div class="item-left inview-balloon">
-          <div class="student">
-            <img src="img/icon-student1.png" alt="">
-            <p class="name">○○○さん<br>大学生</p>
+          <div class="item-inview-balloon">
+            <div class="balloon-text">
+              <p>
+                テキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>
+                テキストテキストテキストテキストテキストテキストテキストテキストテキスト
+              </p>
+            </div>
+            <div class="student">
+              <img src="assets/img/icon-student2.png" alt="">
+              <p class="name">○○○さん<br>会社員</p>
+            </div>
           </div>
-          <div class="balloon-text">
-            <p>
-              テキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>
-              テキストテキストテキストテキストテキストテキストテキストテキストテキスト
-            </p>
-          </div>
-        </div>
 
-        <div class="item-right inview-balloon">
-          <div class="balloon-text">
-            <p>
-              テキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>
-              テキストテキストテキストテキストテキストテキストテキストテキストテキスト
-            </p>
-          </div>
-          <div class="student">
-            <img src="img/icon-student2.png" alt="">
-            <p class="name">○○○さん<br>会社員</p>
-          </div>
-        </div>
-
-        <div class="item-left inview-balloon">
-          <div class="student">
-            <img src="img/icon-student3.png" alt="">
-            <p class="name">○○○さん<br>自営業</p>
-          </div>
-          <div class="balloon-text">
-            <p>
-              テキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>
-              テキストテキストテキストテキストテキストテキストテキストテキストテキスト
-            </p>
+          <div class="item-inview-balloon">
+            <div class="student">
+              <img src="assets/img/icon-student3.png" alt="">
+              <p class="name">○○○さん<br>自営業</p>
+            </div>
+            <div class="balloon-text">
+              <p>
+                テキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>
+                テキストテキストテキストテキストテキストテキストテキストテキストテキスト
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -115,7 +147,6 @@
       <section id="summary">
         <div class="wrapper">
           <h2 class="section-title">スクールの概要</h2>
-
           <ul class="menu">
             <li>
               <h3 class="menu-title">
@@ -196,5 +227,18 @@
       </ul>
       <p class="copyright">&copy; BBB English School</p>
     </footer>
+    <script>
+      $(document).ready(function(){
+      $('#js-slider-2').slick({
+        arrows: true, // 前・次のボタンを表示する
+    dots: true, // ドットナビゲーションを表示する
+    appendDots: $('.dots-2'), // ドットナビゲーションの生成位置を変更
+    speed: 1000, // スライドさせるスピード（ミリ秒）
+    slidesToShow: 1, // 表示させるスライド数
+    centerMode: true, // slidesToShowが奇数のとき、現在のスライドを中央に表示する
+    variableWidth: true, // スライド幅の自動計算を無効化
+      });
+      })
+    </script>
   </body>
 </html>
