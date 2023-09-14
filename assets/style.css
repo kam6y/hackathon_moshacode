@@ -286,6 +286,7 @@ Scene
   border: solid 1px #00F;
   align-items: center;
 }
+/* 以下テンプレサイトよりコピペ */
 slider-2 .slick-slide {
   width: 300px;
   height: 200px;
@@ -295,7 +296,7 @@ slider-2 .slick-slide {
 }
 .slider-2 .slick-slide img {
   display: block;
-  /* 此処を変更する */
+  /* 此処を変更して画像のサイズを変更する */
   width: 100%;
   height: 50vw;
   object-fit: cover;
@@ -371,29 +372,21 @@ Reason
   background-color: #ff2a2a;
   padding: 80px 0;
 }
-/*
-スライド左右共通
-最初は「opacity: 0;」で非表示にしておく
-*/
-.inview-slide-left {
+#reason .inview-slide{
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fff;
   padding: 5%;
+}
+#reason .inview-slide:nth-of-type(odd){
   margin-right: auto;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   margin-bottom: 40px;
 }
-.inview-slide-right {
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  padding: 5%;
+#reason .inview-slide:nth-of-type(even){
   margin-left: auto;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
