@@ -275,6 +275,32 @@ positionで位置を調整する
   opacity: 0.9;
   transform: scale(1.05);
 }
+/* 
+Index
+*/
+#index{
+  margin-bottom: 120px;
+}
+#index .index-list{
+  text-align: center;
+}
+#index .index-list .index-item{
+  display: inline-block;
+  margin: 0 10px;
+}
+.index-content a {
+  color: blue; /* リンクのテキストカラーを青に設定 */
+  text-decoration: none; /* 下線を除去 */
+  margin: 0 auto;
+  font-size: 24px;
+  
+}
+
+.index-content a:hover {
+  text-decoration: underline; /* ホバー時に下線を表示 */
+  color: red; /* ホバー時のテキストカラーを赤に設定 */
+}
+
 
 /* 
 Scene
@@ -475,21 +501,12 @@ Voice
 /*-------------------------------------------
 Summary
 -------------------------------------------*/
-/*
-アニメーションを実行
-
-fall：下で定義している「@keyframes fall」を実行
-10s：アニメーションが始まってから終わるまでの時間（10sかけて実行）
-infinite：アニメーションの繰り返し回数(無限に繰り返す)
-linear：アニメーションの変化（開始から終了まで一定に変化）
-*/
 #summary {
   background: url(./img/bg.gif) repeat;
   animation: fall 10s infinite linear;
   padding: 60px 0;
   margin-bottom: 120px;
 }
-
 /* #summary .menu {
   display: flex;
   flex-wrap: wrap;
@@ -498,10 +515,9 @@ linear：アニメーションの変化（開始から終了まで一定に変�
 #summary .menu {
   display: grid;
   gap: 1rem .5rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px,2fr));
+  grid-template-columns: 1fr 1fr;
 }
 #summary .menu li {
-  width: 48%;
   background-color: #fff;
   border-radius: 20px;
   padding: 60px;
@@ -527,6 +543,7 @@ linear：アニメーションの変化（開始から終了まで一定に変�
   font-size: 1.125rem;
   margin-bottom: 30px;
 }
+/* 一文字目を大きくする */
 #summary li p::first-letter{
   color:#9a0413;
   font-size: 28px;
@@ -606,6 +623,7 @@ Entry
   font-size: 0.625rem;
   text-align: center;
 }
+
 
 /*-------------------------------------------
 SP
