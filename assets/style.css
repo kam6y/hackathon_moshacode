@@ -276,6 +276,16 @@ positionで位置を調整する
   transform: scale(1.05);
 }
 
+/* 
+Scene
+*/
+#scene{
+  margin-bottom: 120px;
+}
+#scene .section-wrapper{
+  border: solid 1px #00F;
+}
+
 /*-------------------------------------------
 Reason
 -------------------------------------------*/
