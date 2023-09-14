@@ -58,18 +58,25 @@ li {
 -------------------------------------------*/
 #header {
   height: 100px;
+  display: flex;
+  padding: 0 30px;
 }
-#header .header-inner{
-  height: 100px;
+#header .header-section{
+  flex: 1; 
+  /* 上要素をｎ分割 */
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 #header .site-title {
-  margin-left: 30px;
+  padding-left: 30px;
   width: 100px;
   line-height: 1px;
 }
 #header .header-title{  
+  display: flex;
+  justify-content: center;
+  text-align: center;
   margin: 0 auto;
   font-size: 48px;
   font-weight: bold;
@@ -77,6 +84,10 @@ li {
   -webkit-background-clip: text;
   color: transparent;
 }
+.header-section:first-child{
+  justify-content: flex-start;
+}
+.
 
 /*
 ハンバーガ―メニュー
@@ -208,28 +219,24 @@ Mainvisual
 -------------------------------------------*/
 #mainvisual {
   position: relative;
-  height: 100vh;
+  height: 50vh;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   /* ナナメ背景を作る */
-  clip-path: polygon(0 0, 100% 0,100% 60%,0 100%);
+  clip-path: polygon(0 0, 100% 0,100% 90%,0 100%);
   /* 枠線にグラディエーションをかける */
   border: solid 8px transparent;
   background: linear-gradient(rgba(220, 16, 16, 0.5), #ff0000) padding-box,
               linear-gradient(to right, #0cf,#87f) border-box;
   border-radius: 2rem;
 }
-/*
-テキストとボタンが画像の上に表示されるように「z-index」を設定
-*/
-#mainvisual .text {
-  position: absolute;
-  top: 30%;
-  left: 5%;
-  z-index: 10;
-  width: 100%;
-}
 #mainvisual .text .title {
-  font-size: 64px;
+  font-size: 48px;
   font-weight: bold;
   margin-bottom: 30px;
   color: #fff;
@@ -246,27 +253,11 @@ Mainvisual
   margin: 0 auto;
   text-align: center;
   border-radius: 50px;
-background: #ff2a2a;
-box-shadow: inset 25px 25px 54px #cf2222,
-            inset -25px -25px 54px #ff3232;
+  background: #ff2a2a;
+  box-shadow: inset 25px 25px 54px #cf2222,
+  inset -25px -25px 54px #ff3232;
 }
-/*
-ボタンの右矢印
-上と右にボーダーを設定し、「transform: rotate(45deg)」で
-45度回転させることで矢印を作成
-positionで位置を調整する
-*/
-#mainvisual .text .btn::after {
-  content: "";
-  width: 16px;
-  height: 16px;
-  border-top: solid 3px #fff;
-  border-right: solid 3px #fff;
-  transform: rotate(45deg);
-  position: absolute;
-  top: 26px;
-  right: 30px;
-}
+
 /*
 ホバー時は、opacityで透過させながら「transform: scale(1.05);」で
 少しだけボタンのサイズを大きくする
