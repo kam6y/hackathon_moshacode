@@ -92,7 +92,7 @@ li {
 /*
 ハンバーガ―メニュー
 */
-.hamburger {
+  .hamburger {
   width: 100px;
   height: 100px;
   background-color: #ff2a2a;
@@ -212,7 +212,7 @@ li {
 #navi .btn:hover {
   background-color: #fff;
   color: #ff2a2a;
-}
+} 
 
 /*-------------------------------------------
 Mainvisual
@@ -439,7 +439,6 @@ Voice
   gap: 60px;
 }
 #voice .item-inview-balloon{
-  border: solid 1px #00F;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -456,7 +455,6 @@ Voice
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: solid 1px #00F;
 }
 #voice .student img {
   width: 120px;
@@ -464,11 +462,9 @@ Voice
   background-color: #ccc;
   border-radius: 50%;
   margin-bottom: 10px;
-  border: solid 1px #00F;
 }
 #voice .student .name {
   font-size: 0.75rem;
-  border: solid 1px #00F;
 }
 /* ふきだしを設定 */
 .balloon-text {
